@@ -15,11 +15,11 @@ script:
   - az --version
   - yarn test
   - yarn build
-  - az storage blob upload --file index.html -d \$root --content-type text/html
-  - az storage blob upload --file asset-manifest.json -d \$root --content-type application/json
-  - az storage blob upload --file manifest.json -d \$root --content-type application/json
-  - az storage blob upload --file service-worker.js -d \$root --content-type application/javascript
-  - az storage blob upload --file favicon.ico -d \$root --content-type image/x-icon
+  - az storage blob upload --file build/index.html --name --container-name \$root --content-type text/html
+  - az storage blob upload --file build/asset-manifest.json --name asset-manifest.json --container-name \$root --content-type application/json
+  - az storage blob upload --file build/manifest.json --name manifest.json --container-name \$root --content-type application/json
+  - az storage blob upload --file build/service-worker.js --name service-worker.js --container-name \$root --content-type application/javascript
+  - az storage blob upload --file build/favicon.ico --name favicon.ico --container-name \$root --content-type image/x-icon
   - az storage blob upload-batch -s build/static -d static --pattern *.js --content-type application/javascript
   - az storage blob upload-batch -s build/static -d static --pattern *.css --content-type text/css
   - az storage blob upload-batch -s build/static -d static --pattern *.svg --content-type image/svg+xml
