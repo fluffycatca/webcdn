@@ -9,10 +9,21 @@ before_install:
   - curl -L https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
   - sudo apt-get install apt-transport-https
   - sudo apt-get update && sudo apt-get install azure-cli
+  - az login --service-principal -u $SP_NAME --password $SP_PASSWORD --tenant $SP_TENANT 
   # < installig az cli
 script: 
   - az --version
   - yarn test
   - yarn build
-  # - az storage blob upload-batch -s public -d public --pattern *.html --content-type text/html
+  - az storage blob upload --file index.html -d \$root --content-type text/html
+  - az storage blob upload --file asset-manifest.json -d \$root --content-type application/json
+  - az storage blob upload --file manifest.json -d \$root --content-type application/json
+  - az storage blob upload --file service-worker.js -d \$root --content-type application/javascript
+  - az storage blob upload --file favicon.ico -d \$root --content-type image/x-icon
+  - az storage blob upload-batch -s build/static -d static --pattern *.js --content-type application/javascript
+  - az storage blob upload-batch -s build/static -d static --pattern *.css --content-type text/css
+  - az storage blob upload-batch -s build/static -d static --pattern *.svg --content-type image/svg+xml
+  - az storage blob upload-batch -s build/static -d static --pattern *.map --content-type application/json
+
+
 
