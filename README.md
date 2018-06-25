@@ -5,7 +5,7 @@
 - Monitor events from iothub 
 - Completely Served on Blob on CDN
 
-## Overall Goal of This Tool: 
+## Overall Goal of This Toolzzz: 
 - Improve Developer Experience with IotHub and EventHub
 - Speed up iteration time during hackfests 
 - This project can be part of the azure portal 
