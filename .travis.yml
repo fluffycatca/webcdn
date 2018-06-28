@@ -24,7 +24,7 @@ install:
   - sudo cp ./azure.list /etc/apt/sources.list.d/
   - sudo apt-get update
   - sudo apt-get install azcopy=7.2.0-netcore
-  #
+  - yarn
 
 
 jobs: 
