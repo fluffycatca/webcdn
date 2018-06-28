@@ -11,7 +11,7 @@ env:
     - CDN_RESOURCE_GROUP="gl_syncweek"
     - CDN_ENDPOINT_NAME="iotgeneratorweb"
     - CDN_PROFILE="iotpage"
-before_install:
+install:
   # installig azure-cli=2.0.38 >
   # https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-apt?view=azure-cli-latest
   - AZ_REPO=$(lsb_release -cs)
@@ -24,6 +24,7 @@ before_install:
   - sudo cp ./azure.list /etc/apt/sources.list.d/
   - sudo apt-get update
   - sudo apt-get install azcopy=7.2.0-netcore
+  - yarn
   
  # only deploy website if we are on the dev branch
 stages:
