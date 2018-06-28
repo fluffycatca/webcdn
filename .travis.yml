@@ -11,7 +11,7 @@ env:
     - CDN_RESOURCE_GROUP="gl_syncweek"
     - CDN_ENDPOINT_NAME="iotgeneratorweb"
     - CDN_PROFILE="iotpage"
-before_install:
+install:
   # installig azure-cli=2.0.38 >
   # https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-apt?view=azure-cli-latest
   - AZ_REPO=$(lsb_release -cs)
@@ -32,6 +32,7 @@ jobs:
       script:
       - yarn test
     - stage: build
+      install: skip
       script:
       - yarn build
     - stage: deploy
